@@ -29,4 +29,4 @@ jobs:
 
     - name: Run tests
       run: |
-        pytest tagebbbuch/test_app.py  # Führt die Tests aus der Datei test_app.py aus
+        pytest test_app.py  # Führt die Tests aus der Datei test_app.py aus

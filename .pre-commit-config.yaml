@@ -12,5 +12,5 @@ repos:
         stages: [pre-push]
         types: [python]
         name: pytest-check
-        entry: python3 -m pytest tagebbbuch/test_app.py
-        language: system 
+        entry: python3 -m pytest test_app.py
+        language: system
