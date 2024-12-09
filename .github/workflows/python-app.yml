@@ -1,0 +1,32 @@
+name: Run Tests on Pull Request
+
+on:
+  pull_request:
+    branches: 
+      - dev  # Der Workflow wird nur bei Pull Requests auf den 'dev' Branch ausgeführt
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # Der Workflow wird auf einem Ubuntu-Runner ausgeführt
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4  # Stellt sicher, dass der Code aus dem Repository ausgecheckt wird
+
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"  # Setzt Python auf Version 3.10
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt  # Installiert alle Abhängigkeiten aus der requirements.txt
+
+    - name: Install pytest
+      run: |
+        pip install pytest  # Stellt sicher, dass pytest installiert ist
+
+    - name: Run tests
+      run: |
+        pytest tagebbbuch/test_app.py  # Führt die Tests aus der Datei test_app.py aus
