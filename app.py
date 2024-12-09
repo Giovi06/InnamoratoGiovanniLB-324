@@ -52,15 +52,6 @@ def add_entry():
     return redirect(url_for("index"))
 
 
-@app.route("/add_entry", methods=["POST"])
-def add_entry():
-    content = request.form["content"]
-    happiness = request.form.get("happiness", "")
-    entry = Entry(content=content, happiness=happiness)
-    db.session.add(entry)
-    db.session.commit()
-    return redirect(url_for("index"))
-
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000)
